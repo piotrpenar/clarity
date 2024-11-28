@@ -50,7 +50,7 @@ export function start(): void {
       };
     }
 
-    if ("CSSMediaRule" in window && CSSMediaRule && mediaInsertRule === null) { 
+    if ("CSSMediaRule" in window && window.CSSMediaRule && mediaInsertRule === null) { 
       mediaInsertRule = CSSMediaRule.prototype.insertRule; 
       CSSMediaRule.prototype.insertRule = function(): number {
         if (core.active()) { schedule(this.parentStyleSheet.ownerNode); }
@@ -66,7 +66,7 @@ export function start(): void {
       };
     }
 
-    if ("CSSMediaRule" in window && CSSMediaRule && mediaDeleteRule === null) { 
+    if ("CSSMediaRule" in window && window.CSSMediaRule && mediaDeleteRule === null) { 
       mediaDeleteRule = CSSMediaRule.prototype.deleteRule;
       CSSMediaRule.prototype.deleteRule = function(): void {
         if (core.active()) { schedule(this.parentStyleSheet.ownerNode); }
